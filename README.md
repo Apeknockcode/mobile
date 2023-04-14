@@ -30,7 +30,29 @@ pnpm add antd-mobile
 ```
 pnpm install lib-flexible --save
 
-pnpm i postcss-px2rem --save
+pnpm install postcss-px2rem
+
+pnpm install tailwindcss
+pnpm install vite-plugin-tailwind
+```
+1. 配置tailwindcss
+```javascript
+// tailwind.config.js
+module.exports = {
+  mode: 'jit',
+  purge: [
+    './src/**/*.html',
+    './src/**/*.js',
+    './src/**/*.jsx',
+    './src/**/*.ts',
+    './src/**/*.tsx',
+  ],
+  theme: {
+    extend: {},
+  },
+  variants: {},
+  plugins: [],
+}
 ```
 2. 配置 `postcss-px2rem`：
 
@@ -184,7 +206,7 @@ export default defineConfig({
 
 路由 react-router-dom@6配置
 ```
-pnpm add react-router-dom@6 --save-dev
+pnpm add react-router-dom@6  @types/react-router-dom --save-dev
 ```
 在根文件main.tsx里面 修改 在app外层用BrowserRouter包裹
 ```
@@ -238,4 +260,35 @@ pnpm install qs
 如确认下载qs模块后 遇见qs报错 则需要 下载@types/qs
 ```
 pnpm install @types/qs -D
+```
+
+vite配置代码压缩
+1. 安装 `rollup-plugin-terser` 插件
+
+```bash
+npm install rollup-plugin-terser --save-dev
+```
+
+2. 配置 `vite.config.js` 文件
+
+```javascript
+import { defineConfig } from 'vite';
+import { terser } from 'rollup-plugin-terser'; // 导入 rollup-plugin-terser 插件
+
+export default defineConfig({
+  build: {
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+        pure_funcs: ['console.log'], // 指定需要删除的不必要函数，例如这里删除了所有的 console.
+      },
+    },
+    rollupOptions: {
+      plugins: [
+        terser(), // 使用 rollup-plugin-terser 插件
+      ],
+    },
+  },
+});
 ```

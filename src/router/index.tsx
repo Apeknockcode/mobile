@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import {lazy} from "react";
+import { lazy } from "react";
 import React from 'react';
- 
+
 // 懒加载组件页面
 // const Home = lazy(() => import("@/pages/home")) 
 // const Login = lazy(() => import("@/pages/login")) 
- 
-function RootRoute(){
+
+const RootRoute: React.FC = () => {
   return (
     <>
       <Routes>

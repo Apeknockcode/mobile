@@ -43,7 +43,7 @@ class RequestHttp {
         * @description 请求拦截器
         */
         this.service.interceptors.request.use(
-            (config: AxiosRequestConfig) => {
+            (config: any) => {
                 axiosCanceler.addPending(config);
                 // * 需要添加的token 自行设置
                 const token: string | null = '';
