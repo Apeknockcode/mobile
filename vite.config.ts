@@ -9,10 +9,9 @@ export default defineConfig({
   plugins: [
     react(),
   ],
-  root: process.cwd(),
-
+  // root: process.cwd(),
   // 配置 Public 目录
-  publicDir: 'public',
+  // publicDir: 'public',
   resolve: {
     alias: {
       "@": path.resolve(__dirname, './src')//配置@别名
@@ -23,20 +22,13 @@ export default defineConfig({
       // scopeBehaviour: 'global' | 'local',
       localsConvention: 'camelCaseOnly', // 使用 camelCase 命名 CSS 类名
     },
-    postcss: '', // 内联的 PostCSS 配置 如果提供了该内联配置，Vite 将不会搜索其他 PostCSS 配置源
+    postcss: './postcss.config.cjs', // 内联的 PostCSS 配置 如果提供了该内联配置，Vite 将不会搜索其他 PostCSS 配置源
     preprocessorOptions: { // css的预处理器选项
       scss: {
         additionalData: `$injectedColor: orange;`
       }
     }
   },
-  // css: {
-  //   postcss: {
-  //     config: {
-  //       path: './postcss.config.cjs',
-  //     },
-  //   },
-  // },
   // 打包输出目录
   build: {
     terserOptions: {
@@ -50,7 +42,7 @@ export default defineConfig({
     //打包文件按照类型分文件夹显示
     rollupOptions: {
       input: {
-        main: path.resolve(__dirname, './index.html'),
+        main: path.resolve(__dirname, 'index.html'),
       },
       output: {
         chunkFileNames: 'js/[name]-[hash].js',
@@ -78,9 +70,9 @@ export default defineConfig({
     // },
 
   },
-  optimizeDeps: {
-    include: ['react', 'react-dom'], // 只打包入口文件所需的依赖项
-  },
+  // optimizeDeps: {
+  //   include: ['react', 'react-dom'], // 只打包入口文件所需的依赖项
+  // },
   json: {
     namedExports: true, // 是否支持从.json文件中进行按名导入
     stringify: false, //  开启此项，导入的 JSON 会被转换为 export default JSON.parse("...") 会禁用按名导入
@@ -104,9 +96,9 @@ export default defineConfig({
       // },
     },
   },
-  ssr: {
-    external: [], // 列出的是要为 SSR 强制外部化的依赖,
-    noExternal: '', // 列出的是防止被 SSR 外部化依赖项
-    target: 'node', // SSR 服务器的构建目标
-  }
+  // ssr: {
+  //   external: [], // 列出的是要为 SSR 强制外部化的依赖,
+  //   noExternal: '', // 列出的是防止被 SSR 外部化依赖项
+  //   target: 'node', // SSR 服务器的构建目标
+  // }
 })

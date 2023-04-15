@@ -1,16 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import { BrowserRouter } from "react-router-dom";
+import {BrowserRouter as Router} from 'react-router-dom'
 import './index.css'
+import 'lib-flexible'
 // import { setRem } from 'lib-flexible';
 // setRem(750); // 设计稿的宽度
-import "lib-flexible"
+
+
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <Router>
       <App />
-    </BrowserRouter>
-  </React.StrictMode>,
+    </Router>
+  </React.StrictMode>
 )
