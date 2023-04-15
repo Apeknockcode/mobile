@@ -70,9 +70,9 @@ export default defineConfig({
     // },
 
   },
-  // optimizeDeps: {
-  //   include: ['react', 'react-dom'], // 只打包入口文件所需的依赖项
-  // },
+  optimizeDeps: {
+    include: ['react', 'react-dom'], // 只打包入口文件所需的依赖项
+  },
   json: {
     namedExports: true, // 是否支持从.json文件中进行按名导入
     stringify: false, //  开启此项，导入的 JSON 会被转换为 export default JSON.parse("...") 会禁用按名导入
