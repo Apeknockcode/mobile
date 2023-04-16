@@ -12,7 +12,8 @@ export default defineConfig({
   root: process.cwd(),
 
   // 配置 Public 目录
-  publicDir: 'public',
+  // publicDir: 'public',
+  // publicDir: resolve('static'),//静态资源文件夹
   resolve: {
     alias: {
       "@": path.resolve(__dirname, './src')//配置@别名
